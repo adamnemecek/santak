@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40A482311E5BC29C001B933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482301E5BC29C001B933B /* AppDelegate.swift */; };
+		40A482331E5BC29C001B933B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482321E5BC29C001B933B /* ViewController.swift */; };
+		40A482361E5BC29C001B933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A482341E5BC29C001B933B /* Main.storyboard */; };
+		40A482391E5BC29C001B933B /* santak.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A482371E5BC29C001B933B /* santak.xcdatamodeld */; };
+		40A4823B1E5BC29C001B933B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40A4823A1E5BC29C001B933B /* Assets.xcassets */; };
+		40A4823E1E5BC29C001B933B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A4823C1E5BC29C001B933B /* LaunchScreen.storyboard */; };
+		40A482491E5BC29C001B933B /* santakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482481E5BC29C001B933B /* santakTests.swift */; };
+		40A482541E5BC29C001B933B /* santakUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482531E5BC29C001B933B /* santakUITests.swift */; };
+		40A482621E5BC305001B933B /* VectorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482611E5BC305001B933B /* VectorHelpers.swift */; };
+		40A482661E5BC39B001B933B /* ImageVectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482651E5BC39B001B933B /* ImageVectors.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		40A482451E5BC29C001B933B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40A482251E5BC29C001B933B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40A4822C1E5BC29C001B933B;
+			remoteInfo = santak;
+		};
+		40A482501E5BC29C001B933B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40A482251E5BC29C001B933B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40A4822C1E5BC29C001B933B;
+			remoteInfo = santak;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		40A4822D1E5BC29C001B933B /* santak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = santak.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A482301E5BC29C001B933B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		40A482321E5BC29C001B933B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40A482351E5BC29C001B933B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40A482381E5BC29C001B933B /* santak.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = santak.xcdatamodel; sourceTree = "<group>"; };
+		40A4823A1E5BC29C001B933B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40A4823D1E5BC29C001B933B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		40A4823F1E5BC29C001B933B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40A482441E5BC29C001B933B /* santakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = santakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A482481E5BC29C001B933B /* santakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = santakTests.swift; sourceTree = "<group>"; };
+		40A4824A1E5BC29C001B933B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40A4824F1E5BC29C001B933B /* santakUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = santakUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A482531E5BC29C001B933B /* santakUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = santakUITests.swift; sourceTree = "<group>"; };
+		40A482551E5BC29C001B933B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40A482611E5BC305001B933B /* VectorHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorHelpers.swift; sourceTree = "<group>"; };
+		40A482651E5BC39B001B933B /* ImageVectors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVectors.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40A4822A1E5BC29C001B933B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40A482411E5BC29C001B933B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40A4824C1E5BC29C001B933B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40A482241E5BC29C001B933B = {
+			isa = PBXGroup;
+			children = (
+				40A4822F1E5BC29C001B933B /* santak */,
+				40A482471E5BC29C001B933B /* santakTests */,
+				40A482521E5BC29C001B933B /* santakUITests */,
+				40A4822E1E5BC29C001B933B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40A4822E1E5BC29C001B933B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40A4822D1E5BC29C001B933B /* santak.app */,
+				40A482441E5BC29C001B933B /* santakTests.xctest */,
+				40A4824F1E5BC29C001B933B /* santakUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40A4822F1E5BC29C001B933B /* santak */ = {
+			isa = PBXGroup;
+			children = (
+				40A482301E5BC29C001B933B /* AppDelegate.swift */,
+				40A482321E5BC29C001B933B /* ViewController.swift */,
+				40A482341E5BC29C001B933B /* Main.storyboard */,
+				40A4823A1E5BC29C001B933B /* Assets.xcassets */,
+				40A4823C1E5BC29C001B933B /* LaunchScreen.storyboard */,
+				40A4823F1E5BC29C001B933B /* Info.plist */,
+				40A482371E5BC29C001B933B /* santak.xcdatamodeld */,
+				40A482611E5BC305001B933B /* VectorHelpers.swift */,
+				40A482651E5BC39B001B933B /* ImageVectors.swift */,
+			);
+			path = santak;
+			sourceTree = "<group>";
+		};
+		40A482471E5BC29C001B933B /* santakTests */ = {
+			isa = PBXGroup;
+			children = (
+				40A482481E5BC29C001B933B /* santakTests.swift */,
+				40A4824A1E5BC29C001B933B /* Info.plist */,
+			);
+			path = santakTests;
+			sourceTree = "<group>";
+		};
+		40A482521E5BC29C001B933B /* santakUITests */ = {
+			isa = PBXGroup;
+			children = (
+				40A482531E5BC29C001B933B /* santakUITests.swift */,
+				40A482551E5BC29C001B933B /* Info.plist */,
+			);
+			path = santakUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40A4822C1E5BC29C001B933B /* santak */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40A482581E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santak" */;
+			buildPhases = (
+				40A482291E5BC29C001B933B /* Sources */,
+				40A4822A1E5BC29C001B933B /* Frameworks */,
+				40A4822B1E5BC29C001B933B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = santak;
+			productName = santak;
+			productReference = 40A4822D1E5BC29C001B933B /* santak.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40A482431E5BC29C001B933B /* santakTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40A4825B1E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santakTests" */;
+			buildPhases = (
+				40A482401E5BC29C001B933B /* Sources */,
+				40A482411E5BC29C001B933B /* Frameworks */,
+				40A482421E5BC29C001B933B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40A482461E5BC29C001B933B /* PBXTargetDependency */,
+			);
+			name = santakTests;
+			productName = santakTests;
+			productReference = 40A482441E5BC29C001B933B /* santakTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		40A4824E1E5BC29C001B933B /* santakUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40A4825E1E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santakUITests" */;
+			buildPhases = (
+				40A4824B1E5BC29C001B933B /* Sources */,
+				40A4824C1E5BC29C001B933B /* Frameworks */,
+				40A4824D1E5BC29C001B933B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40A482511E5BC29C001B933B /* PBXTargetDependency */,
+			);
+			name = santakUITests;
+			productName = santakUITests;
+			productReference = 40A4824F1E5BC29C001B933B /* santakUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40A482251E5BC29C001B933B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Edward Clem Williams";
+				TargetAttributes = {
+					40A4822C1E5BC29C001B933B = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					40A482431E5BC29C001B933B = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 40A4822C1E5BC29C001B933B;
+					};
+					40A4824E1E5BC29C001B933B = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 40A4822C1E5BC29C001B933B;
+					};
+				};
+			};
+			buildConfigurationList = 40A482281E5BC29C001B933B /* Build configuration list for PBXProject "santak" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 40A482241E5BC29C001B933B;
+			productRefGroup = 40A4822E1E5BC29C001B933B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40A4822C1E5BC29C001B933B /* santak */,
+				40A482431E5BC29C001B933B /* santakTests */,
+				40A4824E1E5BC29C001B933B /* santakUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		40A4822B1E5BC29C001B933B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40A4823E1E5BC29C001B933B /* LaunchScreen.storyboard in Resources */,
+				40A4823B1E5BC29C001B933B /* Assets.xcassets in Resources */,
+				40A482361E5BC29C001B933B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40A482421E5BC29C001B933B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40A4824D1E5BC29C001B933B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40A482291E5BC29C001B933B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40A482621E5BC305001B933B /* VectorHelpers.swift in Sources */,
+				40A482331E5BC29C001B933B /* ViewController.swift in Sources */,
+				40A482391E5BC29C001B933B /* santak.xcdatamodeld in Sources */,
+				40A482311E5BC29C001B933B /* AppDelegate.swift in Sources */,
+				40A482661E5BC39B001B933B /* ImageVectors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40A482401E5BC29C001B933B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40A482491E5BC29C001B933B /* santakTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40A4824B1E5BC29C001B933B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40A482541E5BC29C001B933B /* santakUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40A482461E5BC29C001B933B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40A4822C1E5BC29C001B933B /* santak */;
+			targetProxy = 40A482451E5BC29C001B933B /* PBXContainerItemProxy */;
+		};
+		40A482511E5BC29C001B933B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40A4822C1E5BC29C001B933B /* santak */;
+			targetProxy = 40A482501E5BC29C001B933B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		40A482341E5BC29C001B933B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40A482351E5BC29C001B933B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		40A4823C1E5BC29C001B933B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40A4823D1E5BC29C001B933B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40A482561E5BC29C001B933B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		40A482571E5BC29C001B933B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40A482591E5BC29C001B933B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = santak/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edwardclem.santak;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		40A4825A1E5BC29C001B933B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = santak/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edwardclem.santak;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		40A4825C1E5BC29C001B933B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = santakTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edwardclem.santakTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/santak.app/santak";
+			};
+			name = Debug;
+		};
+		40A4825D1E5BC29C001B933B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = santakTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edwardclem.santakTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/santak.app/santak";
+			};
+			name = Release;
+		};
+		40A4825F1E5BC29C001B933B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = santakUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edwardclem.santakUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = santak;
+			};
+			name = Debug;
+		};
+		40A482601E5BC29C001B933B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = santakUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edwardclem.santakUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = santak;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40A482281E5BC29C001B933B /* Build configuration list for PBXProject "santak" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40A482561E5BC29C001B933B /* Debug */,
+				40A482571E5BC29C001B933B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40A482581E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santak" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40A482591E5BC29C001B933B /* Debug */,
+				40A4825A1E5BC29C001B933B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		40A4825B1E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santakTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40A4825C1E5BC29C001B933B /* Debug */,
+				40A4825D1E5BC29C001B933B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		40A4825E1E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santakUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40A4825F1E5BC29C001B933B /* Debug */,
+				40A482601E5BC29C001B933B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		40A482371E5BC29C001B933B /* santak.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				40A482381E5BC29C001B933B /* santak.xcdatamodel */,
+			);
+			currentVersion = 40A482381E5BC29C001B933B /* santak.xcdatamodel */;
+			path = santak.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 40A482251E5BC29C001B933B /* Project object */;
+}
