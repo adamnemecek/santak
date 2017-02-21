@@ -49,8 +49,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
     //input: UIImageView with a black and white RGBA image
     //output: UInt8 array of the alpha values for each pixel, flattened
     //TODO: error handling for null array

@@ -1,0 +1,6 @@
+framework module Pods_santakUITests {
+  umbrella header "Pods-santakUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

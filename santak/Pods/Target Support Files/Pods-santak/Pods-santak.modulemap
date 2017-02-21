@@ -1,0 +1,6 @@
+framework module Pods_santak {
+  umbrella header "Pods-santak-umbrella.h"
+
+  export *
+  module * { export * }
+}
