@@ -22,7 +22,7 @@ def folder_to_json(imgfolder, outfile):
 			print "loading {}".format(filename)
 			img_array = img_to_list("{}/{}".format(imgfolder, filename))
 			file_id = filename.split(".")[0]
-			json_data.append({"char_id": file_id, "img_vec": img_array.tolist()})
+			json_data.append({"id": file_id, "vec": img_array.tolist()})
 
 	with open(outfile, 'w') as jsonfile:
 		json.dump(json_data, jsonfile)

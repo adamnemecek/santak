@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		012B7DCD736F7AE786248A11 /* Pods_santakUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F12BBB9231C33C89887360 /* Pods_santakUITests.framework */; };
 		0E945953988AAE8E4B1D7785 /* Pods_santakTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0E59194B55B5B9F4ED773F /* Pods_santakTests.framework */; };
+		400A8E131E5CF0FC00F36B92 /* json_images.json in Resources */ = {isa = PBXBuildFile; fileRef = 400A8E121E5CF0FC00F36B92 /* json_images.json */; };
 		40A482311E5BC29C001B933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482301E5BC29C001B933B /* AppDelegate.swift */; };
 		40A482331E5BC29C001B933B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A482321E5BC29C001B933B /* ViewController.swift */; };
 		40A482361E5BC29C001B933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A482341E5BC29C001B933B /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		000488D35DD8296FB793DA25 /* Pods-santakTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-santakTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-santakTests/Pods-santakTests.debug.xcconfig"; sourceTree = "<group>"; };
 		097966C9A334AEE2E63825EE /* Pods-santakUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-santakUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-santakUITests/Pods-santakUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2845E3543ACFF678966171F9 /* Pods_santak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_santak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		400A8E121E5CF0FC00F36B92 /* json_images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = json_images.json; sourceTree = "<group>"; };
 		40A4822D1E5BC29C001B933B /* santak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = santak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A482301E5BC29C001B933B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40A482321E5BC29C001B933B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		40A4822F1E5BC29C001B933B /* santak */ = {
 			isa = PBXGroup;
 			children = (
+				400A8E121E5CF0FC00F36B92 /* json_images.json */,
 				40A482301E5BC29C001B933B /* AppDelegate.swift */,
 				40A482321E5BC29C001B933B /* ViewController.swift */,
 				40A482341E5BC29C001B933B /* Main.storyboard */,
@@ -293,6 +296,7 @@
 				40A4823E1E5BC29C001B933B /* LaunchScreen.storyboard in Resources */,
 				40A4823B1E5BC29C001B933B /* Assets.xcassets in Resources */,
 				40A482361E5BC29C001B933B /* Main.storyboard in Resources */,
+				400A8E131E5CF0FC00F36B92 /* json_images.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +712,7 @@
 				40A4825A1E5BC29C001B933B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		40A4825B1E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santakTests" */ = {
 			isa = XCConfigurationList;
@@ -716,6 +721,7 @@
 				40A4825D1E5BC29C001B933B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		40A4825E1E5BC29C001B933B /* Build configuration list for PBXNativeTarget "santakUITests" */ = {
 			isa = XCConfigurationList;
@@ -724,6 +730,7 @@
 				40A482601E5BC29C001B933B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

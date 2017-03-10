@@ -9,6 +9,10 @@ target 'santak' do
 
   # Pods for santak
   pod 'SwiftyJSON'
+  
+  #using Sync to copy JSON to core data
+  pod 'Sync', '~> 2'
+  pod 'DATAStack', '~> 6'
 
   target 'santakTests' do
     inherit! :search_paths

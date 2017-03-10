@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
+import DATAStack
+import Sync
 
 class ViewController: UIViewController {
     
@@ -19,8 +22,15 @@ class ViewController: UIViewController {
     var sideLength = CGFloat(40.0)
     var touchInView = false
     
+    var json_data: JSON = JSON.null //JSON for data loading
+    
+    var dataStack: DATAStack?
+    
+    //MARK - IB functions + properties
+    
     @IBOutlet weak var primaryImageView: UIImageView!
     @IBOutlet weak var secondaryImageView: UIImageView! //used as temporary view
+    @IBOutlet weak var titleText: UILabel!
     
     
     //clear image
@@ -42,6 +52,43 @@ class ViewController: UIViewController {
         
         primaryImageView.layer.borderColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1).cgColor //black border
         primaryImageView.layer.borderWidth = 2
+        
+        //load JSON
+        
+        if let file = Bundle.main.path(forResource: "json_images", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: file))
+                let json = JSON(data: data)
+                json_data = json
+            } catch {
+                json_data = JSON.null
+            }
+        } else {
+            json_data = JSON.null
+        }
+        
+        //Sync.changes(json_data[0] as Array, inEntityNamed: "Glyph", dataStack:self.dataStack)
+        
+        //playing around with DATAstack
+        
+        //save to object
+        let entity = NSEntityDescription.entity(forEntityName: "Glyph", in: (self.dataStack?.mainContext)!)
+        let object = NSManagedObject(entity: entity!, insertInto: self.dataStack?.mainContext)
+        let idnum = Int32(json_data[0]["id"].string!)
+        object.setValue(NSNumber(value: idnum!), forKey: "id")
+        //object.setValue(json_data[0]["vec"], forKey: "vec")
+        try! self.dataStack?.mainContext.save()
+        
+        
+        //fetching
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Glyph")
+        let items = (try! dataStack?.mainContext.fetch(request)) as! [NSManagedObject]
+        
+        print(items)
+        
+        try! self.dataStack!.drop()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,28 +96,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //input: UIImageView with a black and white RGBA image
-    //output: UInt8 array of the alpha values for each pixel, flattened
-    //TODO: error handling for null array
-    //NOTE: I remember reading that the simulator and iOS devices handle this encoding differently, make sure that works
-    func vectorizeImageView(fromImageView ImageView:UIImageView) -> [UInt8]{
-        let width = Int((ImageView.image?.cgImage?.width)!)
-        var ImageArray = Array(repeating: UInt8(0), count: width*width)
-        let data = ImageView.image?.cgImage?.dataProvider?.data
-        let pix: UnsafePointer<UInt8> = CFDataGetBytePtr(data)
-        
-        var pixelIndex: Int = 0
-        
-        for x in 0...width{
-            for y in 0...width{
-                pixelIndex = ((width * Int(y)) + Int(x)) * 4
-                ImageArray[pixelIndex] = 255 - UInt8(pix[pixelIndex + 3]) //so 255 is high, 0 is low
-            }
-        }
-        
-        return ImageArray
-        
-    }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         swiped = false

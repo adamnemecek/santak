@@ -1,12 +1,22 @@
 PODS:
+  - DATAStack (6.1.2)
   - SwiftyJSON (3.1.4)
+  - Sync (2.6.3):
+    - DATAStack (~> 6.1.2)
+    - SYNCPropertyMapper (~> 5.2.0)
+  - SYNCPropertyMapper (5.2.0)
 
 DEPENDENCIES:
+  - DATAStack (~> 6)
   - SwiftyJSON
+  - Sync (~> 2)
 
 SPEC CHECKSUMS:
+  DATAStack: a45fc144e15193f1b22c26b507cc46655ce96a71
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Sync: a41b41cf61625676d3fe66efc09daf25b1548d9d
+  SYNCPropertyMapper: b3157f5183285c8a25ba23877b95a06ec2547e73
 
-PODFILE CHECKSUM: 9a745a99db18356d17e0656976793b74f4062c0a
+PODFILE CHECKSUM: 14a0416c86993c3d80741a5ca781686461bd3b09
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

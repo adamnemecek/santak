@@ -12,6 +12,29 @@ import Darwin
 
 //debug and helper functions for converting images to vectors
 
+//input: UIImageView with a black and white RGBA image
+//output: UInt8 array of the alpha values for each pixel, flattened
+//TODO: error handling for null array
+//NOTE: I remember reading that the simulator and iOS devices handle this encoding differently, make sure that works
+func vectorizeImageView(fromImageView ImageView:UIImageView) -> [UInt8]{
+    let width = Int((ImageView.image?.cgImage?.width)!)
+    var ImageArray = Array(repeating: UInt8(0), count: width*width)
+    let data = ImageView.image?.cgImage?.dataProvider?.data
+    let pix: UnsafePointer<UInt8> = CFDataGetBytePtr(data)
+    
+    var pixelIndex: Int = 0
+    
+    for x in 0...width{
+        for y in 0...width{
+            pixelIndex = ((width * Int(y)) + Int(x)) * 4
+            ImageArray[pixelIndex] = 255 - UInt8(pix[pixelIndex + 3]) //so 255 is high, 0 is low
+        }
+    }
+    
+    return ImageArray
+    
+}
+
 //DEPRECATED
 func pixelValues(fromCGImage imageRef: CGImage?) -> (pixelValues: [UInt8]?, width: Int, height: Int)
 {

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DATAStack.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Pods-santak.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -19,14 +24,29 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>SYNCPropertyMapper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>Sync.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>399F2A70148767B5933972C93A28DA67</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3F4CC9E01443D4F9C2D6A62C7334A95B</key>
 		<dict>
 			<key>primary</key>
@@ -38,6 +58,26 @@
 			<true/>
 		</dict>
 		<key>4DCE4B9120484A4B99807B0F87ACB975</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53D692640DCE4177C3453CB50A53B9E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9835EBD720DE4E5C1963810342C2945E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C78830FFF562149B4B693AB9DB8D3DF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D853DD6F562CA3680F81F18D4658567D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
