@@ -2,42 +2,56 @@
 
 import numpy as np
 from argparse import ArgumentParser
-from skimage import io
+from skimage import io, transform, color
 from sys import argv
 from os import listdir, path
 
 def parse(args):
     parser = ArgumentParser()
-    parser.add_argument("--folder", help="Folder where images are stored")
-    parser.add_argument("--outdata", help="folder for output .npy file containing data")
-    parser.add_argument("--outlabels", help="folder for output .npy file containing labels")
+    parser.add_argument("--folder", help="Folder where square images are stored")
+    parser.add_argument("--outdata", help="folder for compressed .npz archive")
+    parser.add_argument("--dim", help="desired output dimension of square images, will resize if different from input", type=int)
     return parser.parse_args(args)
 
 def run(args):
     #iterate through all images, reshape, add to array
 
-    imgs = []
-    labels = [] #convert char number to label number
-    for img in listdir(args.folder):
-        filename, ext = path.splitext(img)
-        if ext == ".jpeg":
-            #split name
-            char_num = filename.split("_")[0]
+    label_list = [] #convert char number to label number
+    #preallocating output arrays:
 
-            if char_num not in labels:
-                labels.append(char_num)
-            print "loading {}".format(img)
-            img = io.imread("{}/{}".format(args.folder, img))
-            imgs.append(img.flatten())
-            labels.append(labels.index(char_num))
+    imgs = [img for img in listdir(args.folder) if path.splitext(img)[1] == ".jpeg"]
 
-    final_imgs = np.stack(imgs)
-    final_labels = np.array(labels)
+    img_vecs = np.zeros((len(imgs), args.dim, args.dim), dtype=np.int32)
+    img_labels = np.zeros((len(imgs),), dtype=np.int32)
+    print "loading {} images".format(len(imgs))
 
-    np.save(args.outdata, final_imgs)
-    print "saved to {}".format(args.outdata)
-    np.save(args.outdata, final_labels)
-    print "saved to {}".format(args.outlabels)
+    for i, img in enumerate(imgs):
+
+        label = img.split()[0]
+
+        if label not in label_list:
+            label_list.append(label)
+        #load image, convert to greyscale, resize to output dim
+        img_arr = io.imread("{}/{}".format(args.folder, img))
+        processed = transform.resize(color.rgb2grey(img_arr), (args.dim, args.dim))
+
+        img_vecs[i,:, :] = processed
+        img_labels[i] = label_list.index(label)
+
+
+
+    #saving
+    print "saving data to {}".format(args.outdata)
+    np.savez_compressed(args.outdata, data=img_vecs, labels=img_labels)
+
+
+
+
+
+
+
+
+
 
 if __name__=="__main__":
     run(parse(argv[1:]))
