@@ -30,10 +30,10 @@ def run(args):
 
     #get training and test split
     test_data = permuted_data[0:test_max, :, :]
-    test_labels = permuted_labels[0:test_max, :, :]
+    test_labels = permuted_labels[0:test_max]
 
     train_data = permuted_data[test_max:, :, :]
-    train_labels = permuted_labels[test_max:, :, :]
+    train_labels = permuted_labels[test_max:]
 
     #saving
 

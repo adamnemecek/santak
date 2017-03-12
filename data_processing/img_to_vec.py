@@ -21,13 +21,13 @@ def run(args):
 
     imgs = [img for img in listdir(args.folder) if path.splitext(img)[1] == ".jpeg"]
 
-    img_vecs = np.zeros((len(imgs), args.dim, args.dim), dtype=np.int32)
-    img_labels = np.zeros((len(imgs),), dtype=np.int32)
+    img_vecs = np.zeros((len(imgs), args.dim, args.dim), dtype=np.float32)
+    img_labels = np.zeros((len(imgs),), dtype=np.float32)
     print "loading {} images".format(len(imgs))
 
     for i, img in enumerate(imgs):
 
-        label = img.split()[0]
+        label = img.split("_")[0]
 
         if label not in label_list:
             label_list.append(label)
@@ -42,6 +42,7 @@ def run(args):
 
     #saving
     print "saving data to {}".format(args.outdata)
+
     np.savez_compressed(args.outdata, data=img_vecs, labels=img_labels)
 
 
