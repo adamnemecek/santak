@@ -39,9 +39,37 @@ class ViewController: UIViewController {
     }
     
     //search for closest matching glyph 
-    //TODO
+    //hahaha todo, man
+    //next step is probably implementing this over the network?
     @IBAction func search(_ sender: AnyObject){
         print("Searching")
+    }
+    
+    @IBAction func save(_ sender: AnyObject){
+        if primaryImageView.image != nil {
+            print("saving to photo library!")
+            //TODO:figure out selector
+            UIImageWriteToSavedPhotosAlbum(primaryImageView.image!, nil, nil,nil)
+        } else{
+            let ac = UIAlertController(title: "Image Blank!", message: "No image is present.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
+            
+            
+        print("Saving to photos library!")
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
+        if error == nil {
+            let ac = UIAlertController(title: "Saved!", message: "Save to photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
+        } else {
+            let ac = UIAlertController(title: "Save error", message: error?.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
     }
     
 
@@ -55,39 +83,39 @@ class ViewController: UIViewController {
         
         //load JSON
         
-        if let file = Bundle.main.path(forResource: "json_images", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: file))
-                let json = JSON(data: data)
-                json_data = json
-            } catch {
-                json_data = JSON.null
-            }
-        } else {
-            json_data = JSON.null
-        }
-        
-        //Sync.changes(json_data[0] as Array, inEntityNamed: "Glyph", dataStack:self.dataStack)
-        
-        //playing around with DATAstack
-        
-        //save to object
-        let entity = NSEntityDescription.entity(forEntityName: "Glyph", in: (self.dataStack?.mainContext)!)
-        let object = NSManagedObject(entity: entity!, insertInto: self.dataStack?.mainContext)
-        let idnum = Int32(json_data[0]["id"].string!)
-        object.setValue(NSNumber(value: idnum!), forKey: "id")
-        //object.setValue(json_data[0]["vec"], forKey: "vec")
-        try! self.dataStack?.mainContext.save()
-        
-        
-        //fetching
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Glyph")
-        let items = (try! dataStack?.mainContext.fetch(request)) as! [NSManagedObject]
-        
-        print(items)
-        
-        try! self.dataStack!.drop()
+//        if let file = Bundle.main.path(forResource: "json_images", ofType: "json") {
+//            do {
+//                let data = try Data(contentsOf: URL(fileURLWithPath: file))
+//                let json = JSON(data: data)
+//                json_data = json
+//            } catch {
+//                json_data = JSON.null
+//            }
+//        } else {
+//            json_data = JSON.null
+//        }
+//        
+//        //Sync.changes(json_data[0] as Array, inEntityNamed: "Glyph", dataStack:self.dataStack)
+//        
+//        //playing around with DATAstack
+//        
+//        //save to object
+//        let entity = NSEntityDescription.entity(forEntityName: "Glyph", in: (self.dataStack?.mainContext)!)
+//        let object = NSManagedObject(entity: entity!, insertInto: self.dataStack?.mainContext)
+//        let idnum = Int32(json_data[0]["id"].string!)
+//        object.setValue(NSNumber(value: idnum!), forKey: "id")
+//        //object.setValue(json_data[0]["vec"], forKey: "vec")
+//        try! self.dataStack?.mainContext.save()
+//        
+//        
+//        //fetching
+//        
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Glyph")
+//        let items = (try! dataStack?.mainContext.fetch(request)) as! [NSManagedObject]
+//        
+//        print(items)
+//        
+//        try! self.dataStack!.drop()
     
     }
 
