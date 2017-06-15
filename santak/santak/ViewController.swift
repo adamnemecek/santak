@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     
     var lastPoint = CGPoint(x: 0, y:0)
     var firstPoint = CGPoint(x: 0, y: 0)
-    var brushWidth: CGFloat = 5
+    var brushWidth: CGFloat = 8
     var opacity: CGFloat = 1.0
     var swiped = false
     let xAxis = CGVector(dx: 1, dy:0)
-    var sideLength = CGFloat(40.0)
+    var sideLength = CGFloat(50.0)
     var touchInView = false
     
     var json_data: JSON = JSON.null //JSON for data loading
@@ -187,16 +187,36 @@ class ViewController: UIViewController {
         
         context?.setLineWidth(brushWidth)
         context?.move(to: point1)
-        context?.addLine(to: point2)
-        context?.addLine(to: point3)
-        context?.addLine(to: point1) //back to tip
+        
+        //control points for quad bezier curves
+        //let rotation = CGAffineTransform.init(rotationAngle: CGFloat(2.0 * Double.pi / 3.0))
+        
+        let cp2 = CGPoint(x:-6, y:0)
+        
+        //rotate to get point
+        
+        let cp1  = CGPoint(x:0, y:0)//cp2.applying(rotation)
+        
+        let cp3 = CGPoint(x:0, y:0) //cp1.applying(rotation)
+        
+        //let cp1 = CGPoint(x:0, y:0)
+        //let cp3 = CGPoint(x:0, y:0)
+        
+        //experimenting with bezier curve
+        context?.addQuadCurve(to: point2, control: cp1)
+        
+        //context?.addLine(to: point2)
+        context?.addQuadCurve(to: point3, control: cp2)
+        //context?.addLine(to: point3)
+        //context?.addLine(to: point1) //back to tip
+        context?.addQuadCurve(to: point1, control: cp3)
         
         context?.setFillColor(red: 255, green: 255, blue: 255, alpha: 1.0)
         context?.drawPath(using: .fillStroke) //fill path with all white, then stroke it
         
-        //draw line
+        //draw line, avoid overlap
         
-        context?.move(to: point1)
+        context?.move(to: CGPoint(x:point1.x - 5, y:point1.y))
         
         //tail point in new coordinate frame
         
