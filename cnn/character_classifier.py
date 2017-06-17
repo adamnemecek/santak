@@ -4,12 +4,13 @@ import numpy as np
 import tensorflow as tf
 
 class CharacterClassifier():
-    def __init__(self, data_dict, fc_size=1024, epochs=10, keep_prob=0.5, batch_size=32, verbose=1):
+    def __init__(self, data_dict, save_loc, fc_size=1024, epochs=20, keep_prob=0.5, batch_size=50, verbose=0):
         """
         Deep CNN performing classification on images.
         """
 
         self.fc_size, self.epochs, self.batch_size, self.verbose, self.keep_prob = fc_size, epochs, batch_size, verbose, keep_prob
+        self.save_loc = save_loc
         self.setup_data(data_dict)
 
         self.session = tf.Session()
@@ -24,6 +25,12 @@ class CharacterClassifier():
 
         #run initializer
         self.session.run(tf.global_variables_initializer())
+
+        #build saver
+        self.saver = tf.train.Saver(var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=tf.get_variable_scope().name))
+
+        #write graph structure.
+        tf.train.write_graph(self.session.graph_def, self.save_loc, "santak-graph.pbtxt")
 
 
     def build_loss(self):
@@ -87,40 +94,46 @@ class CharacterClassifier():
                 batches += 1
                 if self.verbose == 1:
                     print 'Epoch %d Batch %d\tCurrent Loss: %.3f' % (e, batches, curr_loss / batches)
-
+            self.saver.save(self.session, "{}/{}".format(self.save_loc, 'santak-cnn', global_step=e))
             print 'Epoch %s Average Loss:' % str(e), curr_loss / batches
 
     def test(self):
         """
         Tests the model on the provided test data.
+        Tests in batches.
         """
+        num_correct = 0
+        for start, end in zip(range(0, self.test_data.shape[0] - self.batch_size, self.batch_size),
+                                          range(self.batch_size, self.test_data.shape[0], self.batch_size)):
 
-        def test(self, print_example=False):
-            """
-            Performs tests on validation data.
-            """
-
-            y = self.session.run(self.logits, feed_dict={self.x_imgs: self.test_data,
+            y = self.session.run(self.logits, feed_dict={self.x_imgs: self.test_data[start:end, :, :, :],
                                                         self.keep_prob_placeholder: 1})
-
-
             #compute argmax, compare
-
             y_hat = np.argmax(y, axis=1)
 
-            is_correct = np.equal(self.test_labels, y_hat)
-
-            pct_correct = np.sum(is_correct)/float(len(is_correct))
-
-            print "accuracy: {}".format(pct_correct)
+            num_correct += np.sum(np.equal(self.test_labels[start:end], y_hat))
 
 
+        #write test results
+        #TODO: add more of these
+        outfile="{}/{}".format(self.save_loc, "test_report.txt")
+
+        outstr = "accuracy: {}".format(float(num_correct)/self.test_data.shape[0])
+
+        print outstr
+
+        with open(outfile, 'w') as f:
+            f.write(outstr)
+
+        print "saved report to {}".format(outfile)
 
 
     def build_inference(self):
         """
         build inference graph. 3 convolutional layers, with 1 fully connected layer.
         """
+
+
 
         self.x_imgs = tf.placeholder(tf.float32, shape=[None, self.img_shape[0], self.img_shape[1], 1], name='input_imgs')
         self.y_ = tf.placeholder(tf.float32, shape=[None, self.num_classes], name='onehot_classes')
@@ -138,7 +151,7 @@ class CharacterClassifier():
         #max pooling 3x3
         pool1 = tf.nn.max_pool(h_conv1, ksize=[1, 3, 3, 1], strides=[1, 3, 3, 1], padding='SAME')
 
-        print "pool 1 shape: {}".format(pool1.shape)
+        #print "pool 1 shape: {}".format(pool1.shape)
 
         #second convolutional layer
         #depth changed b/c previous neuron volume is of depth 32 now!
@@ -153,7 +166,7 @@ class CharacterClassifier():
         #max pooling 3x3
         pool2 = tf.nn.max_pool(h_conv2, ksize=[1, 3, 3, 1], strides=[1, 3, 3, 1], padding='SAME')
 
-        print "pool 2 shape: {}".format(pool2.shape)
+        #print "pool 2 shape: {}".format(pool2.shape)
 
         #third convolutional layer
         kernel_3 = tf.Variable(tf.truncated_normal([3, 3, 64, 128], stddev=0.1, dtype=tf.float32))
@@ -166,7 +179,7 @@ class CharacterClassifier():
 
         #max pooling 2xt
         pool3 = tf.nn.max_pool(h_conv3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
-        print "pool 3 shape: {}".format(pool3.shape)
+        #print "pool 3 shape: {}".format(pool3.shape)
         #fully connected layer
 
         #get shape of FC layer

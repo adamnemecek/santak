@@ -9,6 +9,7 @@ from sys import argv
 def parse(args):
     parser = ArgumentParser()
     parser.add_argument("--data", help="npz data archive")
+    parser.add_argument("--save", help="location of output graph structure")
     return parser.parse_args(args)
 
 def run(args):
@@ -17,7 +18,7 @@ def run(args):
     print "loading {}".format(args.data)
     data_dict = np.load(args.data)
 
-    classifier = cc.CharacterClassifier(data_dict)
+    classifier = cc.CharacterClassifier(data_dict, args.save)
 
     #training
     classifier.train()

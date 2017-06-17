@@ -1,0 +1,2 @@
+model_checkpoint_path: "santak-cnn"
+all_model_checkpoint_paths: "santak-cnn"
