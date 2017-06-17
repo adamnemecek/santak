@@ -4,13 +4,13 @@ import numpy as np
 import tensorflow as tf
 
 class CharacterClassifier():
-    def __init__(self, data_dict, save_loc, fc_size=1024, epochs=20, keep_prob=0.5, batch_size=50, verbose=0):
+    def __init__(self, data_dict, save_loc, load_loc, fc_size=1024, epochs=20, keep_prob=0.5, batch_size=50, verbose=0):
         """
         Deep CNN performing classification on images.
         """
 
         self.fc_size, self.epochs, self.batch_size, self.verbose, self.keep_prob = fc_size, epochs, batch_size, verbose, keep_prob
-        self.save_loc = save_loc
+        self.save_loc, self.load_loc = save_loc, load_loc
         self.setup_data(data_dict)
 
         self.session = tf.Session()
@@ -27,10 +27,14 @@ class CharacterClassifier():
         self.session.run(tf.global_variables_initializer())
 
         #build saver
-        self.saver = tf.train.Saver(var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=tf.get_variable_scope().name))
-
+        #self.saver = tf.train.Saver(var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=tf.get_variable_scope().name))
+        self.saver = tf.train.Saver() #saving all variables
         #write graph structure.
-        tf.train.write_graph(self.session.graph_def, self.save_loc, "santak-graph.pbtxt")
+        if save_loc:
+            tf.train.write_graph(self.session.graph_def, self.save_loc, "santak-graph.pbtxt")
+        if load_loc:
+            self.saver.restore(self.session, self.load_loc)
+            print "loaded weights from {}".format(self.load_loc)
 
 
     def build_loss(self):
@@ -94,7 +98,8 @@ class CharacterClassifier():
                 batches += 1
                 if self.verbose == 1:
                     print 'Epoch %d Batch %d\tCurrent Loss: %.3f' % (e, batches, curr_loss / batches)
-            self.saver.save(self.session, "{}/{}".format(self.save_loc, 'santak-cnn', global_step=e))
+            if save_loc:
+                self.saver.save(self.session, "{}/{}".format(self.save_loc, 'santak-cnn', global_step=e))
             print 'Epoch %s Average Loss:' % str(e), curr_loss / batches
 
     def test(self):
@@ -114,18 +119,19 @@ class CharacterClassifier():
             num_correct += np.sum(np.equal(self.test_labels[start:end], y_hat))
 
 
-        #write test results
-        #TODO: add more of these
-        outfile="{}/{}".format(self.save_loc, "test_report.txt")
+        if save_loc:
+            #write test results
+            #TODO: add more of these
+            outfile="{}/{}".format(self.save_loc, "test_report.txt")
 
-        outstr = "accuracy: {}".format(float(num_correct)/self.test_data.shape[0])
+            outstr = "accuracy: {}".format(float(num_correct)/self.test_data.shape[0])
 
-        print outstr
+            print outstr
 
-        with open(outfile, 'w') as f:
-            f.write(outstr)
+            with open(outfile, 'w') as f:
+                f.write(outstr)
 
-        print "saved report to {}".format(outfile)
+            print "saved report to {}".format(outfile)
 
 
     def build_inference(self):
