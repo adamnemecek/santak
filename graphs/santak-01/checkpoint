@@ -1,2 +1,2 @@
-model_checkpoint_path: "santak-cnn"
-all_model_checkpoint_paths: "santak-cnn"
+model_checkpoint_path: "santak-weights.ckpt"
+all_model_checkpoint_paths: "santak-weights.ckpt"

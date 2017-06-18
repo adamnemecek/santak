@@ -98,9 +98,11 @@ class CharacterClassifier():
                 batches += 1
                 if self.verbose == 1:
                     print 'Epoch %d Batch %d\tCurrent Loss: %.3f' % (e, batches, curr_loss / batches)
-            if save_loc:
-                self.saver.save(self.session, "{}/{}".format(self.save_loc, 'santak-cnn', global_step=e))
             print 'Epoch %s Average Loss:' % str(e), curr_loss / batches
+        #only save weights at the end of training
+        if self.save_loc:
+            self.saver.save(self.session, "{}/{}".format(self.save_loc, 'santak-weights.ckpt'))
+
 
     def test(self):
         """
@@ -118,15 +120,14 @@ class CharacterClassifier():
 
             num_correct += np.sum(np.equal(self.test_labels[start:end], y_hat))
 
+        outstr = "accuracy: {}".format(float(num_correct)/self.test_data.shape[0])
 
-        if save_loc:
+        print outstr
+
+        if self.save_loc:
             #write test results
             #TODO: add more of these
             outfile="{}/{}".format(self.save_loc, "test_report.txt")
-
-            outstr = "accuracy: {}".format(float(num_correct)/self.test_data.shape[0])
-
-            print outstr
 
             with open(outfile, 'w') as f:
                 f.write(outstr)
@@ -200,6 +201,7 @@ class CharacterClassifier():
         h_fc1 = tf.nn.relu(tf.nn.bias_add(tf.matmul(pool3_flattened, W_fc1), b_fc))
 
         #add dropout
+        #TODO: remove dropout if it'll cause a problem during Bender conversion
         self.keep_prob_placeholder = tf.placeholder(tf.float32, name="keep_prob")
         h_fc1_drop = tf.nn.dropout(h_fc1, self.keep_prob_placeholder)
 
