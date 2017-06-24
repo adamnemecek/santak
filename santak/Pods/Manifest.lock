@@ -1,5 +1,8 @@
 PODS:
   - DATAStack (6.1.2)
+  - MetalBender (0.1.0):
+    - SwiftProtobuf (= 0.9.903)
+  - SwiftProtobuf (0.9.903)
   - SwiftyJSON (3.1.4)
   - Sync (2.6.3):
     - DATAStack (~> 6.1.2)
@@ -8,15 +11,27 @@ PODS:
 
 DEPENDENCIES:
   - DATAStack (~> 6)
+  - MetalBender (from `https://github.com/xmartlabs/Bender.git`)
   - SwiftyJSON
   - Sync (~> 2)
 
+EXTERNAL SOURCES:
+  MetalBender:
+    :git: https://github.com/xmartlabs/Bender.git
+
+CHECKOUT OPTIONS:
+  MetalBender:
+    :commit: 2698f689baf48c7a1c079928147f3db12cd8d442
+    :git: https://github.com/xmartlabs/Bender.git
+
 SPEC CHECKSUMS:
   DATAStack: a45fc144e15193f1b22c26b507cc46655ce96a71
+  MetalBender: 3a2fe6d427a428a8d75c5d9e91ed46c559aea27d
+  SwiftProtobuf: d7efc9bea9d3c3bdfc8f6664fe19ee5dc19c04a8
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   Sync: a41b41cf61625676d3fe66efc09daf25b1548d9d
   SYNCPropertyMapper: b3157f5183285c8a25ba23877b95a06ec2547e73
 
-PODFILE CHECKSUM: 14a0416c86993c3d80741a5ca781686461bd3b09
+PODFILE CHECKSUM: f2cb3115ce646d2fcafa21a0387c378e5f3ce6ea
 
 COCOAPODS: 1.2.0

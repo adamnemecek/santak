@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>MetalBender.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>Pods-santak.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -29,6 +34,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>SwiftProtobuf.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,7 +52,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0D70E371FC60B19AC5CC6C8A8907DC59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1415A3818673BEBF3F8352E83FDEE412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>26287C07E5F8CEF1C5C9CD98CC94231C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2AF555CFF86B558108D48CB0060CF7CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>32D851EE7574F084F72CDC1CC539FDA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>399F2A70148767B5933972C93A28DA67</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3E3E3BD9BDC082A5199EDF1274E7C1EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -18,12 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     //initialize DataStack
-    
-    var dataStack: DATAStack = {
-        let dataStack = DATAStack(modelName: "santak")
-        
-        return dataStack
-    }()
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //initialize viewcontroller from storyboard!
@@ -32,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController: ViewController = storyBoard.instantiateInitialViewController() as! ViewController
-        viewController.dataStack = self.dataStack
         self.window?.rootViewController = UINavigationController(rootViewController: viewController)
         self.window?.makeKeyAndVisible()
         

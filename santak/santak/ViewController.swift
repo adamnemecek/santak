@@ -7,9 +7,11 @@
 //
 
 import UIKit
-import SwiftyJSON
-import DATAStack
 import Sync
+import Metal
+import MetalKit
+import MetalPerformanceShaders
+import MetalBender
 
 class ViewController: UIViewController {
     
@@ -21,10 +23,15 @@ class ViewController: UIViewController {
     let xAxis = CGVector(dx: 1, dy:0)
     var sideLength = CGFloat(50.0)
     var touchInView = false
+    var network : Network!
+    var commandQueue: MTLCommandQueue!
+    var device: MTLDevice!
+    var textureLoader: MTKTextureLoader!
     
-    var json_data: JSON = JSON.null //JSON for data loading
-    
-    var dataStack: DATAStack?
+    //still broken?
+    //OH it's 2x scaling because of retina I think?
+    //greyscale image function does weirdness here. seems to work, though. hacky af.
+    var targetSize = CGSize(width: 100, height: 100)
     
     //MARK - IB functions + properties
     
@@ -32,17 +39,74 @@ class ViewController: UIViewController {
     @IBOutlet weak var secondaryImageView: UIImageView! //used as temporary view
     @IBOutlet weak var titleText: UILabel!
     
-    
+
     //clear image
     @IBAction func clear(_ sender: AnyObject){
         primaryImageView.image = nil
     }
     
     //search for closest matching glyph 
-    //hahaha todo, man
-    //next step is probably implementing this over the network?
+    //run inference on Bender graph
     @IBAction func search(_ sender: AnyObject){
-        print("Searching")
+        
+         print(String(describing: self.primaryImageView.image?.size))
+        if primaryImageView.image != nil {
+            //scale down image to 100 x 100
+            print("preprocessing image")
+            //let texture = self.textureLoader.newTexture(with: , options: [])
+            
+            let scaledImg = primaryImageView.image?.resizedImage(newSize: self.targetSize)
+            
+            print(String(describing: scaledImg?.size))
+            
+            //NOTE: the image isn't actually greyscale. 
+            
+            //converting to grayscale!
+            
+            print("converting to grayscale")
+            
+            let greyImg = scaledImg?.grayScaleImage()
+            
+            print(greyImg?.cgImage.debugDescription)
+            //saving image to photo library for debug
+//            UIImageWriteToSavedPhotosAlbum(scaledImg!, nil, nil,nil)
+//
+            let texture: MTLTexture
+            do {
+                texture = try textureLoader.newTexture(with: (greyImg?.cgImage)!, options: nil)
+            } catch{
+                fatalError("error loading image to MTLTexture")
+            }
+
+            //BOOM
+            let input: MPSImage = MPSImage(texture: texture, featureChannels: 1)
+            
+            print(input.debugDescription)
+            
+            print("running inference")
+            //TODO: wait until callback is completed
+            network.run(inputImage: input, queue: commandQueue, callback: handleOutput)
+            
+        } else {
+            let ac = UIAlertController(title: "Image Blank!", message: "No image is present.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
+    }
+    
+    func handleOutput(output: MPSImage){
+        print("inference completed!!")
+        print(output.debugDescription)
+        //20 feature channels
+        let results = Texture(metalTexture: output.texture, size: LayerSize(f: 20, w: 1, h: 1))
+        
+        let flattened = results.data.flatMap({$0})
+        let max = flattened.max()
+        let index = flattened.index(of: max!)
+        print(String(describing:flattened))
+        print(index)
+        
+
     }
     
     @IBAction func save(_ sender: AnyObject){
@@ -81,41 +145,33 @@ class ViewController: UIViewController {
         primaryImageView.layer.borderColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1).cgColor //black border
         primaryImageView.layer.borderWidth = 2
         
-        //load JSON
         
-//        if let file = Bundle.main.path(forResource: "json_images", ofType: "json") {
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: file))
-//                let json = JSON(data: data)
-//                json_data = json
-//            } catch {
-//                json_data = JSON.null
-//            }
-//        } else {
-//            json_data = JSON.null
-//        }
-//        
-//        //Sync.changes(json_data[0] as Array, inEntityNamed: "Glyph", dataStack:self.dataStack)
-//        
-//        //playing around with DATAstack
-//        
-//        //save to object
-//        let entity = NSEntityDescription.entity(forEntityName: "Glyph", in: (self.dataStack?.mainContext)!)
-//        let object = NSManagedObject(entity: entity!, insertInto: self.dataStack?.mainContext)
-//        let idnum = Int32(json_data[0]["id"].string!)
-//        object.setValue(NSNumber(value: idnum!), forKey: "id")
-//        //object.setValue(json_data[0]["vec"], forKey: "vec")
-//        try! self.dataStack?.mainContext.save()
-//        
-//        
-//        //fetching
-//        
-//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Glyph")
-//        let items = (try! dataStack?.mainContext.fetch(request)) as! [NSManagedObject]
-//        
-//        print(items)
-//        
-//        try! self.dataStack!.drop()
+        //create MTLDevice
+        print("initializing Metal device")
+        self.device = MTLCreateSystemDefaultDevice()
+        
+        
+        self.commandQueue = self.device.makeCommandQueue()
+        
+        self.textureLoader = MTKTextureLoader(device: self.device)
+        
+        
+        self.network = Network(device: device!, inputSize: LayerSize(f: 1, w: 100), parameterLoader:nil)
+        
+        let url = Bundle.main.url(forResource: "santak-01", withExtension: "pb")
+        
+        //NOTE: I think the default converter's mappers will handle transposition. .
+        let converter = TFConverter.default()
+        
+        self.network.convert(converter: converter, url: url!, type: .binary)
+        
+        //add softmax layer
+        
+        //self.network.addPostProcessing(layers: [Softmax()])
+        
+        self.network.initialize()
+        
+        print("loaded TF network")
     
     }
 

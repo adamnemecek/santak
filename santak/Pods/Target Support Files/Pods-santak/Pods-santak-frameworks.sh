@@ -90,13 +90,17 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DATAStack/DATAStack.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MetalBender/MetalBender.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SYNCPropertyMapper/SYNCPropertyMapper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftProtobuf/SwiftProtobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Sync/Sync.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DATAStack/DATAStack.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MetalBender/MetalBender.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SYNCPropertyMapper/SYNCPropertyMapper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftProtobuf/SwiftProtobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Sync/Sync.framework"
 fi

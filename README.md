@@ -6,4 +6,4 @@ Drawing-based lookup app for cuneiform characters.
 
 Reference characters from CuneiformComposite font, provided by the Unicode consortium.
 
-Requires TensorFlow 1.0 and Xcode 6.
+Requires TensorFlow 1.2 and Xcode 8. Built with [Bender](https://github.com/xmartlabs/Bender)

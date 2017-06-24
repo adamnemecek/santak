@@ -213,4 +213,6 @@ class CharacterClassifier():
 
         y_logits = tf.nn.bias_add(tf.matmul(h_fc1_drop, W_readout), b_readout)
 
+        print y_logits.name
+
         return y_logits

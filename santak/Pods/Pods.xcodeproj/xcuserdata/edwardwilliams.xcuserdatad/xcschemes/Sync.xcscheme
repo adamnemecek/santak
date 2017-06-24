@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "399F2A70148767B5933972C93A28DA67"
+               BlueprintIdentifier = "1415A3818673BEBF3F8352E83FDEE412"
                BuildableName = "Sync.framework"
                BlueprintName = "Sync"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "399F2A70148767B5933972C93A28DA67"
+            BlueprintIdentifier = "1415A3818673BEBF3F8352E83FDEE412"
             BuildableName = "Sync.framework"
             BlueprintName = "Sync"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "399F2A70148767B5933972C93A28DA67"
+            BlueprintIdentifier = "1415A3818673BEBF3F8352E83FDEE412"
             BuildableName = "Sync.framework"
             BlueprintName = "Sync"
             ReferencedContainer = "container:Pods.xcodeproj">

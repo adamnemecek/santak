@@ -1,0 +1,6 @@
+framework module MetalBender {
+  umbrella header "MetalBender-umbrella.h"
+
+  export *
+  module * { export * }
+}
